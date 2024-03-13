@@ -1,0 +1,105 @@
+1
+import pandas as pds
+import numpy as npy
+
+2
+name = pds.Series(["Bob", "Amy", "Vicky", "Tim"])
+print(name)
+print(name.index)
+print(name.values)
+
+3
+name = pds.Series(["Bob", "Amy", "Vicky", "Tim"], index=["A", "B", "C", "D"])
+print(name)
+print(name.index)
+print(name[1])
+print(name['D'])
+
+4
+ind = {"A":"Ant","B":"Bird","C":"Cat"}
+animal = pds.Series(ind)
+print(animal)
+
+5
+name = pds.Series(["Bob", "Amy", "Vicky", "Tim"])
+othername = pds.Series(["Tommy", "Kitty"])
+name2 = name.append(othername)
+print(name)
+print(name2)
+name3 = name.append(othername,ignore_index = True)
+print(name3)
+
+6
+name = pds.Series(["Bob", "Amy", "Vicky", "Tim"])
+del_name = name.drop(2)
+print(name)
+print(del_name)
+name = pds.Series(["Bob", "Amy", "Vicky", "Tim"], index=["A", "B", "C", "D"])
+del_name2 = name.drop("A")
+print(del_name2)
+
+7
+name = pds.Series(["Bob", "Amy", "Vicky", "Tim"])
+name[1] = "Sean"
+print(name)
+name = pds.Series(["Bob", "Amy", "Vicky", "Tim"], index=["A", "B", "C", "D"])
+name["A"] = "Sean"
+print(name)
+
+8
+name = pds.Series(["Bob", "Amy", "Vicky", "Tim", "Tommy"])
+print(name.size)
+
+9
+name = pds.Series(["Bob", "Amy", "Vicky", "Tim", "Tommy"])
+key = name.str.contains("i")
+print(key)
+
+10
+name = pds.Series(["Bob", "Amy", "Vicky", "Tim", "Tommy"])
+replace_name = name.str.replace("Bob", "Sean")
+print(replace_name)
+
+11
+numbers = npy.random.randint(0,200,10)
+print(numbers)
+N = pds.Series(numbers)
+print(N.max())
+print(N.min())
+print(N.mean())
+print(N.sum())
+print(N.nlargest(3))
+print(N.nsmallest(3))
+
+12
+numbers = npy.random.randint(0,200,12)
+N = pds.Series(numbers)
+print(N)
+print(N < 100)
+print(N[N < 100])
+print(N[N <= 100 ])
+print(N[N == 100 ])
+print(N[N != 100 ])
+print(N[(N >= 30) & (N <=90)])
+print(N[N.between(60, 80)])
+print(N[(N >= 30) | (N <=90)])
+
+13
+numbers = npy.random.randint(0,200,12)
+N = pds.Series(numbers)
+print(N)
+print(N[N.isin(i for i in range(100, 150))])
+N[11] = None
+print(N)
+print(N[N.isnull()])
+print(N[N.notnull()])
+
+14
+numbers = npy.random.randint(0,200,12)
+N = pds.Series(numbers)
+print(N)
+print(N.sort_values())
+print(N.sort_values(ascending = False))
+print(N.sort_index())
+print(N.sort_index(ascending = False))
+
